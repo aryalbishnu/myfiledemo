@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.example.demo.mapper.UserMapper">
+  <insert id="doinsert">
+  INSERT INTO public.ramesh(
+	id, username, contact, email, password)
+	VALUES (#{id}, #{username}, #{contact}, #{email}, #{password});
+  </insert>
+  
+  <select id="doLoging" resultType="int"> 
+  select count(email) from public.ramesh where email=#{email} and password=#{password}
+  </select>
+  
+  <select id ="doSelect" resultType ="com.example.demo.entity.Combine">
+  
+  select * from public.ramesh
+  
+  ORDER BY id ASC;
+  </select>
+  
+  
+   <delete id="deleteUser">
+DELETE FROM public.ramesh
+	WHERE id=#{id} and username=#{username} and contact=#{contact} and email=#{email} and password = #{password};
+</delete>
+ <update id="editUser">
+ UPDATE  ramesh
+	SET username=#{username}, contact=#{contact} ,email=#{email}, password=#{password}
+	WHERE id=#{id} 
+
+ </update>
+  <select id="searchUser" resultType="com.example.demo.entity.Combine">
+		SELECT * from public.ramesh 
+		<where>
+		<if test="username !=''">
+		username =#{username}
+		</if>
+		<if test="email !=''">
+		email =#{email}
+		</if>
+
+		</where>
+	
+	</select>
+	   <select id="timeLoging" resultType="int"> 
+  select count(id) from public.ramesh where id=#{id} and username=#{username}
+  </select>
+  <insert id="doInsert">
+  INSERT INTO public.been(
+	id, username, "inTime", "outTime")
+	VALUES (#{id}, #{username}, #{inTime}, #{outTime});
+  
+  </insert>
+  
+  <update id="doUpdate">
+  UPDATE been
+  SET  "outTime"=#{outTime}
+  where id=#{id} and username=#{username}
+  </update>
+	
+  </mapper>
+  

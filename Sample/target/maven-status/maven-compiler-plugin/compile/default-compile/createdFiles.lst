@@ -1,0 +1,5 @@
+com/example/demo/controller/UserController.class
+com/example/demo/SampleApplication.class
+com/example/demo/mapper/UserMapper.class
+com/example/demo/entity/Combine.class
+com/example/demo/model/Ram.class
